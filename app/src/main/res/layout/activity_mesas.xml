@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mesas">
+
+    <ImageButton
+        android:id="@+id/back_mesas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="297dp"
+        android:elevation="5dp"
+        android:onClick="returnVentanaLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar_mesas"
+        android:layout_width="362dp"
+        android:layout_height="60dp"
+        android:background="@color/primario"
+        android:elevation="4dp"
+        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="-6dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="94dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="55dp"
+        android:onClick="empezar"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton3"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/editbox_dropdown_light_frame" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="94dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginBottom="55dp"
+        android:onClick="empezar"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/editbox_dropdown_light_frame" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="94dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="55dp"
+        android:onClick="empezar"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton5"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:srcCompat="@android:drawable/editbox_dropdown_light_frame" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="94dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginBottom="179dp"
+        android:onClick="empezar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButton5"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton4"
+        app:srcCompat="@android:drawable/editbox_dropdown_light_frame" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="94dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="55dp"
+        android:onClick="empezar"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:srcCompat="@android:drawable/editbox_dropdown_light_frame" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="94dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="179dp"
+        android:onClick="empezar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+        app:srcCompat="@android:drawable/editbox_dropdown_light_frame" />
+
+    <Button
+        android:id="@+id/ayuda"
+        android:layout_width="65dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="28dp"
+        android:onClick="ayuda"
+        android:drawableTop="@drawable/ic_flag_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="#FF0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.89" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
