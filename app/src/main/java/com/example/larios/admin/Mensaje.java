@@ -1,4 +1,4 @@
-package com.example.larios;
+package com.example.larios.admin;
 
 public class Mensaje {
     private String nombre;

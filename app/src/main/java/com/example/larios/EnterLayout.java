@@ -3,7 +3,6 @@ package com.example.larios;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -12,6 +11,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.larios.admin.MesasAdmin;
+import com.example.larios.camarero.Mesas;
+import com.example.larios.usuarios.UsersDbHelper;
+import com.example.larios.usuarios.Usuario;
 
 import java.util.ArrayList;
 
@@ -45,12 +49,12 @@ public class EnterLayout extends AppCompatActivity {
             tv2.setTextColor(Color.RED);
         }else{
             if (actual.getAdmin().equals("1")){
-                Intent intent = new Intent(this,MesasAdmin.class);
+                Intent intent = new Intent(this, MesasAdmin.class);
                 //Guardar el usuario como string
                 //intent.putExtra(EXTRA_MESSAGE,actual.toString());
                 startActivity(intent);
             }else{
-                Intent intent = new Intent(this,Mesas.class);
+                Intent intent = new Intent(this, Mesas.class);
                 intent.putExtra(USER_MESSAGE,actual.getNombre());
                 //Guardar el usuario como string
                 //intent.putExtra(EXTRA_MESSAGE,actual.toString());

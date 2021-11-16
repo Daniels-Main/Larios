@@ -1,4 +1,4 @@
-package com.example.larios;
+package com.example.larios.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,9 +10,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.larios.EnterLayout;
+import com.example.larios.GlobalVariables;
+import com.example.larios.R;
+import com.example.larios.usuarios.UsersDbHelper;
 
 public class AddCamarero extends AppCompatActivity {
     private Toolbar toolbar;
@@ -70,7 +74,7 @@ public class AddCamarero extends AppCompatActivity {
     }
 
     public void returnVentanaLogin(View view){
-        Intent intent = new Intent(this,EnterLayout.class);
+        Intent intent = new Intent(this, EnterLayout.class);
         startActivity(intent);
     }
 
@@ -79,8 +83,8 @@ public class AddCamarero extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageView2);
         url = editText.getText().toString();
         new LoadImage(imageView).execute(url);
-        imageView.setMaxWidth(150);
-        imageView.setMaxHeight(150);
+        imageView.setMaxWidth(140);
+        imageView.setMaxHeight(140);
         editText.getText().clear();
     }
 

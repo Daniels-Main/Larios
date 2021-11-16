@@ -13,25 +13,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Larios">
         <activity
-            android:name=".Mensajes"
+            android:name=".admin.Mensajes"
             android:exported="false" />
         <activity
-            android:name=".InterfazPlatos"
+            android:name=".camarero.InterfazPlatos"
             android:exported="false" />
         <activity
-            android:name=".MainTickets"
+            android:name=".admin.MainTickets"
             android:exported="false" />
         <activity
-            android:name=".AddCamarero"
+            android:name=".admin.AddCamarero"
             android:exported="false" />
         <activity
             android:name=".RestContra"
             android:exported="false" />
         <activity
-            android:name=".MesasAdmin"
+            android:name=".admin.MesasAdmin"
             android:exported="false" />
         <activity
-            android:name=".Mesas"
+            android:name=".camarero.Mesas"
             android:exported="false" />
         <activity
             android:name=".EnterLayout"

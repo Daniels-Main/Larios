@@ -1,4 +1,4 @@
-package com.example.larios;
+package com.example.larios.admin;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

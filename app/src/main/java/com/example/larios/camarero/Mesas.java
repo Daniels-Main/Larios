@@ -1,16 +1,11 @@
-package com.example.larios;
+package com.example.larios.camarero;
 
-import androidx.annotation.ColorRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,11 +13,15 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.larios.EnterLayout;
+import com.example.larios.GlobalVariables;
+import com.example.larios.ObjetoMesa;
+import com.example.larios.R;
+import com.example.larios.admin.Mensaje;
 
 import java.util.ArrayList;
 

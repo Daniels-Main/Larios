@@ -1,4 +1,4 @@
-package com.example.larios;
+package com.example.larios.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,7 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.TextView;
+
+import com.example.larios.EnterLayout;
+import com.example.larios.GlobalVariables;
+import com.example.larios.R;
 
 public class MainTickets extends AppCompatActivity {
     private Toolbar toolbar;
@@ -64,7 +67,7 @@ public class MainTickets extends AppCompatActivity {
     }
 
     public void returnVentanaLogin(View view){
-        Intent intent = new Intent(this,EnterLayout.class);
+        Intent intent = new Intent(this, EnterLayout.class);
         startActivity(intent);
     }
 }

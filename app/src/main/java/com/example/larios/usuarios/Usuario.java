@@ -1,8 +1,6 @@
-package com.example.larios;
+package com.example.larios.usuarios;
 
 import android.content.ContentValues;
-
-import java.util.UUID;
 
 public class Usuario {
     private String id;

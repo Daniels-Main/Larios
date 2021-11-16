@@ -6,19 +6,19 @@
 		<tipo>Entrante</tipo>
 		<precio>6.5</precio>
 		<ingredientes>
-			<verduras>1</verduras>
-			<aceitunas>1</aceitunas>
-			<harina>1</harina>
-			<lacteos>1</lacteos>
-			<carne>0</carne>
-			<pescado>0</pescado>
-			<marisco>0</marisco>
-			<arroz>0</arroz>
-			<pasta>0</pasta>
-			<azúcar>0</azúcar>
-			<chocolate>0</chocolate>
-			<huevos>0</huevos>
-			<frutos_secos>0</frutos_secos>
+			<verduras>1</verduras><!--0-->
+			<aceitunas>1</aceitunas><!--1-->
+			<harina>1</harina><!--2-->
+			<lacteos>1</lacteos><!--3-->
+			<carne>0</carne><!--4-->
+			<pescado>0</pescado><!--5-->
+			<marisco>0</marisco><!--6-->
+			<arroz>0</arroz><!--7-->
+			<pasta>0</pasta><!--8-->
+			<azúcar>0</azúcar><!--9-->
+			<chocolate>0</chocolate><!--10-->
+			<huevos>0</huevos><!--11-->
+			<frutos_secos>0</frutos_secos><!--12-->
 		</ingredientes>
 	</plato>
 	<plato>

@@ -2,6 +2,8 @@ package com.example.larios;
 
 import android.app.Application;
 
+import com.example.larios.admin.Mensaje;
+
 import java.util.ArrayList;
 
 public class GlobalVariables extends Application {

@@ -1,4 +1,4 @@
-package com.example.larios;
+package com.example.larios.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ListPopupWindow;
@@ -12,10 +12,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.larios.EnterLayout;
+import com.example.larios.GlobalVariables;
+import com.example.larios.ObjetoMesa;
+import com.example.larios.R;
+import com.example.larios.usuarios.UsersDbHelper;
+
 import java.util.List;
 
 public class MesasAdmin extends AppCompatActivity {
@@ -107,7 +111,7 @@ public class MesasAdmin extends AppCompatActivity {
     }
 
     public void returnVentanaLogin(View view){
-        Intent intent = new Intent(this,EnterLayout.class);
+        Intent intent = new Intent(this, EnterLayout.class);
         startActivity(intent);
     }
 

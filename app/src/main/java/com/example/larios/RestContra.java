@@ -3,13 +3,13 @@ package com.example.larios;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.EdgeEffect;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import com.example.larios.usuarios.UsersDbHelper;
+import com.example.larios.usuarios.Usuario;
 
 import java.util.ArrayList;
 

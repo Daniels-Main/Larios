@@ -1,27 +1,25 @@
-package com.example.larios;
+package com.example.larios.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.larios.EnterLayout;
+import com.example.larios.GlobalVariables;
+import com.example.larios.R;
 
 import java.util.ArrayList;
 
@@ -138,7 +136,7 @@ public class Mensajes extends AppCompatActivity {
     }
 
     public void returnVentanaLogin(View view){
-        Intent intent = new Intent(this,EnterLayout.class);
+        Intent intent = new Intent(this, EnterLayout.class);
         startActivity(intent);
     }
 }

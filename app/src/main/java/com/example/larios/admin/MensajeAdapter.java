@@ -1,4 +1,4 @@
-package com.example.larios;
+package com.example.larios.admin;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.example.larios.R;
 
 import java.util.List;
 
