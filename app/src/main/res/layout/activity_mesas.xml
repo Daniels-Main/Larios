@@ -120,9 +120,9 @@
         android:id="@+id/ayuda"
         android:layout_width="65dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="28dp"
-        android:onClick="ayuda"
+        android:layout_marginBottom="44dp"
         android:drawableTop="@drawable/ic_flag_circle"
+        android:onClick="ayuda"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -136,8 +136,9 @@
         android:textColor="#FF0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.89" />
+        app:layout_constraintVertical_bias="0.974" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
