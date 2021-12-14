@@ -13,6 +13,8 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.larios.comidasybebidas.CargarDelXML;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,6 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
         ((GlobalVariables) this.getApplication()).inicializar();
         ((GlobalVariables) this.getApplication()).inicializarMensajes();
+        CargarDelXML a = new CargarDelXML();
+        try {
+            a.TodasBebidas();
+            a.TodosPlatos();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void iniciar(View view){

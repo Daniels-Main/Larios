@@ -3,12 +3,16 @@ package com.example.larios;
 import android.app.Application;
 
 import com.example.larios.admin.Mensaje;
+import com.example.larios.comidasybebidas.Bebida;
+import com.example.larios.comidasybebidas.Plato;
 
 import java.util.ArrayList;
 
 public class GlobalVariables extends Application {
     private ArrayList<ObjetoMesa> someVariable;
     private ArrayList<Mensaje> mensajes;
+    private ArrayList<Bebida> bebidas;
+    private ArrayList<Plato> platos;
 
     public ArrayList<ObjetoMesa> getSomeVariable() {
         return someVariable;
@@ -45,5 +49,21 @@ public class GlobalVariables extends Application {
 
     public void remove(Mensaje m){
         mensajes.remove(m);
+    }
+
+    public ArrayList<Bebida> getBebidas() {
+        return bebidas;
+    }
+
+    public void setBebidas(ArrayList<Bebida> bebidas) {
+        this.bebidas = bebidas;
+    }
+
+    public ArrayList<Plato> getPlatos() {
+        return platos;
+    }
+
+    public void setPlatos(ArrayList<Plato> platos) {
+        this.platos = platos;
     }
 }

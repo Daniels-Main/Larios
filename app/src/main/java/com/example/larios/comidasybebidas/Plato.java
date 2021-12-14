@@ -16,6 +16,9 @@ public class Plato {
         this.precio = precio;
         this.ingredientes = ingredientes;
     }
+    public Plato(){
+
+    }
 
     public String getNombre() {
         return nombre;
