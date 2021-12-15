@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.larios.comidasybebidas.Bebida;
 import com.example.larios.comidasybebidas.CargarDelXML;
 
 import java.util.ArrayList;
@@ -26,18 +27,19 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
+    }
+
+    public void iniciar(View view){
         ((GlobalVariables) this.getApplication()).inicializar();
         ((GlobalVariables) this.getApplication()).inicializarMensajes();
         CargarDelXML a = new CargarDelXML();
         try {
-            a.TodasBebidas();
-            a.TodosPlatos();
+            ((GlobalVariables) this.getApplication()).setBebidas(a.TodasBebidas(this));
+            ((GlobalVariables) this.getApplication()).setPlatos(a.TodosPlatos(this));
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
-    public void iniciar(View view){
         Intent intent = new Intent(this,EnterLayout.class);
         startActivity(intent);
     }

@@ -11,6 +11,7 @@
         <entry key="..\:/Android Studio/Larios/app/src/main/res/drawable/custom_user_icon.xml" value="0.37864583333333335" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.37864583333333335" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.37864583333333335" />
+        <entry key="..\:/Android Studio/Larios/app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.37864583333333335" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/drawable/ic_baseline_focused.xml" value="0.37864583333333335" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/drawable/ic_baseline_queue.xml" value="0.37864583333333335" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/drawable/ic_flecha.xml" value="0.37864583333333335" />
@@ -24,6 +25,7 @@
         <entry key="..\:/Android Studio/Larios/app/src/main/res/drawable/menu.xml" value="0.37864583333333335" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/drawable/toolbar_chida.xml" value="0.37864583333333335" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_add_camarero.xml" value="0.5" />
+        <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_buscador.xml" value="0.67" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_enter_layout.xml" value="0.5412130637636081" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_interfaz_platos.xml" value="0.5" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_main.xml" value="0.5" />
