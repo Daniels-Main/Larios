@@ -18,13 +18,29 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-1dp"
         tools:layout_editor_absoluteY="1dp">
+        <ImageButton
+            android:id="@+id/back_mesas2"
+            android:layout_width="51dp"
+            android:layout_height="44dp"
+            android:layout_marginBottom="260dp"
+            android:elevation="5dp"
+            android:onClick="volver"
+            android:layout_marginTop="9dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.052"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.033"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="275dp"
             android:layout_height="39dp"
             android:layout_alignParentTop="false"
-            android:layout_marginStart="75dp"
+            android:layout_marginStart="20dp"
             android:background="@drawable/custom_input"
             android:iconifiedByDefault="false"
             android:queryHint="Buscar Platos/Bebidas"
@@ -34,23 +50,11 @@
             app:layout_constraintVertical_bias="0.026" />
 
 
+
+
     </androidx.appcompat.widget.Toolbar>
 
-    <ImageButton
-        android:id="@+id/back_mesas2"
-        android:layout_width="51dp"
-        android:layout_height="44dp"
-        android:layout_marginBottom="260dp"
-        android:elevation="5dp"
-        android:onClick="volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.033"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
 
     <TextView
         android:id="@+id/textView5"

@@ -6,6 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".camarero.InterfazPlatos">
 
+    <ImageButton
+        android:id="@+id/back_mesas4"
+        android:layout_width="51dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="260dp"
+        android:elevation="5dp"
+        android:onClick="volver"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.033"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar_i_platos"
+        android:layout_width="362dp"
+        android:layout_height="60dp"
+        android:background="@color/primario"
+        android:elevation="4dp"
+        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
@@ -63,7 +94,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.371" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -85,21 +116,8 @@
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="379dp" />
         </LinearLayout>
     </ScrollView>
-
-    <ImageButton
-        android:id="@+id/imageButton10"
-        android:layout_width="90dp"
-        android:layout_height="58dp"
-        android:onClick="buscadorMenu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017"
-        app:srcCompat="@drawable/ic_baseline_menu_book_24"
-        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
