@@ -24,8 +24,8 @@ public class MensajeAdapter extends ArrayAdapter<Mensaje> {
         Mensaje m = getItem (position);
         View view = LayoutInflater.from (getContext ()).inflate (newResourceId, parent, false);
 
-        TextView username = view.findViewById (R.id.label);
-        TextView mensaje = view.findViewById (R.id.subitem);
+        TextView username = view.findViewById (R.id.txt_name);
+        TextView mensaje = view.findViewById (R.id.txt_category);
 
         username.setText (m.getNombre ());
         mensaje.setText (m.getMensaje ());
