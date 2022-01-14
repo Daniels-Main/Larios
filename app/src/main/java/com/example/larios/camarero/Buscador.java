@@ -61,7 +61,6 @@ public class Buscador extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 adapter.setListMenu(list);
-
                 adapter.getFilter().filter(query);
                 return false;
 

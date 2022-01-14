@@ -48,7 +48,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972" />
+        app:layout_constraintVertical_bias="0.902" />
 
     <Button
         android:id="@+id/button7"
@@ -61,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972" />
+        app:layout_constraintVertical_bias="0.902" />
 
     <TextView
         android:id="@+id/textView2"
@@ -84,7 +84,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:text="TOTAL: 000.00€"
+        android:text="TOTAL: 0.00€"
         android:textAlignment="center"
         android:textColor="#2C2C2C"
         android:textSize="20sp"
@@ -94,7 +94,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.165" />
 
     <ScrollView
         android:id="@+id/scrollView2"
