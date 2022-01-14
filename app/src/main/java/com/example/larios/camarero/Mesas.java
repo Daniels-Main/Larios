@@ -64,6 +64,7 @@ public class Mesas extends AppCompatActivity {
                 //Añadir algo a la cuenta
             } else if (colorId == Color.BLUE) {
                 Intent intent = new Intent(this, InterfazPlatos.class);
+                intent.putExtra("id",view.getId());
                 startActivity(intent);
             }
         }catch (Exception e){

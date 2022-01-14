@@ -19,6 +19,8 @@ import com.example.larios.admin.MainTickets;
 import com.example.larios.admin.Mensajes;
 import com.example.larios.admin.MesasAdmin;
 
+import org.w3c.dom.Text;
+
 import javax.xml.transform.OutputKeys;
 
 public class InterfazPlatos extends AppCompatActivity {
@@ -39,6 +41,29 @@ public class InterfazPlatos extends AppCompatActivity {
         setContentView(R.layout.activity_interfaz_platos);
         toolbar = (Toolbar) findViewById(R.id.tool_bar_i_platos);
         setSupportActionBar(toolbar);
+
+        Bundle b = new Bundle();
+        b = getIntent().getExtras();
+        int id = b.getInt("id");
+
+        TextView numeroMesa = findViewById(R.id.textView2);
+
+        if (id==R.id.imageButton){
+            numeroMesa.setText("Mesa Numero 1");
+        }else if (id==R.id.imageButton2){
+            numeroMesa.setText("Mesa Numero 2");
+        }else if (id==R.id.imageButton3){
+            numeroMesa.setText("Mesa Numero 3");
+        }else if (id==R.id.imageButton4){
+            numeroMesa.setText("Mesa Numero 4");
+        }else if (id==R.id.imageButton5){
+            numeroMesa.setText("Mesa Numero 5");
+        }else if (id==R.id.imageButton6){
+            numeroMesa.setText("Mesa Numero 6");
+        }else{
+            numeroMesa.setText("Mesa Numero Irreconocible");
+        }
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
