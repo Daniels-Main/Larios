@@ -72,7 +72,7 @@ public class MesasAdmin extends AppCompatActivity {
                 }
             }
             ((GlobalVariables) this.getApplication()).add(new ObjetoMesa(vid, status.get(position)));
-            Toast.makeText(this, status.get(position)+" es camarero de esta mesa", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MesasAdmin.this, status.get(position)+" es camarero de esta mesa", Toast.LENGTH_SHORT).show();
             camarerosPopupList.dismiss();
         });
     }

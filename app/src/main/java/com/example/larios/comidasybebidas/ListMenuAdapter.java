@@ -31,6 +31,11 @@ public class ListMenuAdapter extends BaseAdapter {
         this.listMenu = listMenu;
     }
 
+    public List<ObjetoLista> getListMenu(){
+        return listMenu;
+    }
+
+
     @Override
     public int getCount() {
         return listMenu.size();
