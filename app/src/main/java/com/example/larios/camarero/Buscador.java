@@ -3,6 +3,7 @@ package com.example.larios.camarero;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -19,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.larios.EdicionPlatos;
 import com.example.larios.GlobalVariables;
 import com.example.larios.R;
 import com.example.larios.comidasybebidas.Bebida;
@@ -84,113 +87,31 @@ public class Buscador extends AppCompatActivity {
 
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
 
-
             ObjetoLista selected = adapter.getListMenu().get(i);
             String donde = "";
-            if (buscarPlato(selected.getNombre())==null){
-                donde = "bebida";
-            }else {
+            if (buscarBebida(selected.getNombre())==null){
                 donde = "plato";
+            }else {
+                donde = "bebida";
             }
 
 
             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
             if (donde.equals("plato")){
-                View popupView = inflater.inflate(R.layout.pop_up_window_plato, null);
-
-                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                boolean focusable = true;
-                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-                Plato plato = buscarPlato(selected.getNombre());
-                TextView nombre = popupView.findViewById(R.id.popUp_nombre_comida);
-                TextView categoria = popupView.findViewById(R.id.popUp_categoria);
-                TextView tipo = popupView.findViewById(R.id.popUp_tipo);
-                TextView precio = popupView.findViewById(R.id.popUp_precio);
-                nombre.setText(plato.getNombre());
-                categoria.setText(plato.getCategoria());
-                tipo.setText(plato.getTipo());
-                precio.setText(plato.getPrecio()+"€  ");
-
-                List<String> ingredientes = plato.getIngredientes();
-
-                CheckBox verdura = popupView.findViewById(R.id.cb_verdura);
-                CheckBox aceituna = popupView.findViewById(R.id.cb_aceitunas);
-                CheckBox harina = popupView.findViewById(R.id.cb_harina);
-                CheckBox lacteos = popupView.findViewById(R.id.cb_lacteos);
-                CheckBox carne = popupView.findViewById(R.id.cb_carne);
-                CheckBox pescado = popupView.findViewById(R.id.cb_pescado);
-                CheckBox marisco = popupView.findViewById(R.id.cb_marisco);
-                CheckBox arroz = popupView.findViewById(R.id.cb_arroz);
-                CheckBox pasta = popupView.findViewById(R.id.cb_pasta);
-                CheckBox azucar = popupView.findViewById(R.id.cb_azucar);
-                CheckBox chocoles = popupView.findViewById(R.id.cb_chocolate);
-                CheckBox huevos = popupView.findViewById(R.id.cb_huevo);
-                CheckBox frutos_secos = popupView.findViewById(R.id.cb_frutos);
-
-                if (ingredientes.contains("verduras")){
-                    verdura.setChecked(true);
-                }
-                if (ingredientes.contains("aceitunas")){
-                    aceituna.setChecked(true);
-                }
-                if (ingredientes.contains("harina")){
-                    harina.setChecked(true);
-                }
-                if (ingredientes.contains("lacteos")){
-                    lacteos.setChecked(true);
-                }
-                if (ingredientes.contains("carne")){
-                    carne.setChecked(true);
-                }
-                if (ingredientes.contains("pescado")){
-                    pescado.setChecked(true);
-                }
-                if (ingredientes.contains("marisco")){
-                    marisco.setChecked(true);
-                }
-                if (ingredientes.contains("arroz")){
-                    arroz.setChecked(true);
-                }
-                if (ingredientes.contains("pasta")){
-                    pasta.setChecked(true);
-                }
-                if (ingredientes.contains("azúcar")){
-                    azucar.setChecked(true);
-                }
-                if (ingredientes.contains("chocolate")){
-                    chocoles.setChecked(true);
-                }
-                if (ingredientes.contains("huevos")){
-                    huevos.setChecked(true);
-                }
-                if (ingredientes.contains("frutos_secos")){
-                    frutos_secos.setChecked(true);
-                }
-
+                Intent intent = new Intent(this, EdicionPlatos.class);
+                intent.putExtra("plato",selected.getNombre());
+                startActivity(intent);
             }else{
                 Toast.makeText(Buscador.this, "Bebida añadida", Toast.LENGTH_SHORT).show();
             }
-
-
 
         });
 
 
     }
 
-    public Plato buscarPlato(String obejtoPulsado){
-        for(Plato p : ((GlobalVariables) this.getApplication()).getPlatos()){
-            if (obejtoPulsado.equals(p.getNombre())){
-                return p;
-            }
-        }
-        return null;
-    }
+
     public Bebida buscarBebida(String obejtoPulsado){
         for(Bebida b : ((GlobalVariables) this.getApplication()).getBebidas()){
             if (obejtoPulsado.equals(b.getNombre())){
