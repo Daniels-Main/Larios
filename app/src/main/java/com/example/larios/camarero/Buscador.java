@@ -1,27 +1,17 @@
 package com.example.larios.camarero;
 
-import androidx.appcompat.app.ActionBar;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.example.larios.EdicionPlatos;
 import com.example.larios.GlobalVariables;
 import com.example.larios.R;
 import com.example.larios.comidasybebidas.Bebida;
@@ -29,17 +19,15 @@ import com.example.larios.comidasybebidas.ListMenuAdapter;
 import com.example.larios.comidasybebidas.ObjetoLista;
 import com.example.larios.comidasybebidas.Plato;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class Buscador extends AppCompatActivity {
 
     SearchView searchView;
     ListView listView;
     ArrayList<ObjetoLista> list;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +89,7 @@ public class Buscador extends AppCompatActivity {
             if (donde.equals("plato")){
                 Intent intent = new Intent(this, EdicionPlatos.class);
                 intent.putExtra("plato",selected.getNombre());
-                startActivity(intent);
+                startActivityForResult(intent, 19);
             }else{
                 Toast.makeText(Buscador.this, "Bebida añadida", Toast.LENGTH_SHORT).show();
             }
@@ -121,8 +109,23 @@ public class Buscador extends AppCompatActivity {
         return null;
     }
 
+
+
     public void volver(View view) {
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 19) {
+            if (resultCode == RESULT_OK) {
+                setResult(RESULT_OK, data);
+                finish();
+            }else{
+                Toast.makeText(this, "El plato no se ha añadido", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 

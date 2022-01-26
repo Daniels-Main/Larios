@@ -1,5 +1,6 @@
 package com.example.larios.camarero;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.larios.GlobalVariables;
 import com.example.larios.R;
@@ -18,6 +20,7 @@ import com.example.larios.admin.AddCamarero;
 import com.example.larios.admin.MainTickets;
 import com.example.larios.admin.Mensajes;
 import com.example.larios.admin.MesasAdmin;
+import com.example.larios.comidasybebidas.Plato;
 
 import org.w3c.dom.Text;
 
@@ -26,6 +29,7 @@ import javax.xml.transform.OutputKeys;
 public class InterfazPlatos extends AppCompatActivity {
     private Toolbar toolbar;
     private Menu mMenu;
+    Plato editado;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +92,7 @@ public class InterfazPlatos extends AppCompatActivity {
                 return true;
 
             case R.id.action_carta:
-                startActivity(new Intent(this, Buscador.class));
+                startActivityForResult(new Intent(this, Buscador.class),1568);
                 break;
         }
 
@@ -98,6 +102,31 @@ public class InterfazPlatos extends AppCompatActivity {
 
     public void volver(View view) {
         finish();
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1568) {
+            if (resultCode == RESULT_OK) {
+                editado = buscarPlato(data.getStringExtra("nombre_plato"));
+                editado.setIngredientes(data.getStringArrayListExtra("ingredientes"));
+            }else{
+                Toast.makeText(this, "El plato no se ha añadido", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(this,"No se desde donde has vuelto",Toast.LENGTH_SHORT);
+        }
+    }
+
+    public Plato buscarPlato(String obejtoPulsado){
+        for(Plato p : ((GlobalVariables) this.getApplication()).getPlatos()){
+            if (obejtoPulsado.equals(p.getNombre())){
+                return p;
+            }
+        }
+        return null;
     }
 
 

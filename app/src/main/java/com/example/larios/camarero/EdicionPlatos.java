@@ -1,4 +1,4 @@
-package com.example.larios;
+package com.example.larios.camarero;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,9 +10,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.larios.camarero.Buscador;
+import com.example.larios.GlobalVariables;
+import com.example.larios.R;
 import com.example.larios.comidasybebidas.Plato;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EdicionPlatos extends AppCompatActivity {
@@ -99,9 +101,23 @@ public class EdicionPlatos extends AppCompatActivity {
             frutos_secos.setChecked(true);
         }
 
+
         Button cancelar = findViewById(R.id.button_cancel);
         cancelar.setOnClickListener(view1 -> {
             finish();
+        });
+
+        Button accept = findViewById(R.id.button_acept);
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent a = new Intent();
+                a.putExtra("nombre_plato",plato.getNombre());
+                ArrayList<String> ingred = (ArrayList<String>) plato.getIngredientes();
+                a.putExtra("ingredientes",ingred);
+                setResult(RESULT_OK, a);
+                finish();
+            }
         });
 
     }
