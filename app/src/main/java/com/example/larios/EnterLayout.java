@@ -59,14 +59,10 @@ public class EnterLayout extends AppCompatActivity {
         }else{
             if (actual.getAdmin().equals("1")){
                 Intent intent = new Intent(this, MesasAdmin.class);
-                //Guardar el usuario como string
-                //intent.putExtra(EXTRA_MESSAGE,actual.toString());
                 startActivity(intent);
             }else{
                 Intent intent = new Intent(this, Mesas.class);
                 intent.putExtra(USER_MESSAGE,actual.getNombre());
-                //Guardar el usuario como string
-                //intent.putExtra(EXTRA_MESSAGE,actual.toString());
                 startActivity(intent);
             }
         }
