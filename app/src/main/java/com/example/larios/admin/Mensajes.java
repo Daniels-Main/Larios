@@ -51,6 +51,8 @@ public class Mensajes extends AppCompatActivity {
         ls();
 
     }
+
+    //Metodo para ver los mensajes y al clikar se abre un popUp con el contenido
     public void ls(){
         tx.setText("");
         if (!(((GlobalVariables) this.getApplication()).getMensajes().size() ==0)){
@@ -67,14 +69,12 @@ public class Mensajes extends AppCompatActivity {
                         getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = inflater.inflate(R.layout.pop_up_window, null);
 
-                // create the popup window
                 int width = LinearLayout.LayoutParams.WRAP_CONTENT;
                 int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-                boolean focusable = true; // lets taps outside the popup also dismiss it
+                boolean focusable = true;
                 final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-                // show the popup window
-                // which view you pass in doesn't matter, it is only used for the window tolken
+
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
                 TextView user = popupView.findViewById(R.id.user_pop);
                 user.setText(mensaje.getNombre());
@@ -96,6 +96,7 @@ public class Mensajes extends AppCompatActivity {
 
     }
 
+    //Borrar un mensaje
     public void borrarMensaje(Mensaje m){
         ((GlobalVariables) this.getApplication()).remove(m);
         finish();

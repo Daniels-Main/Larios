@@ -51,11 +51,13 @@ public class MesasAdmin extends AppCompatActivity {
     }
 
 
+    //Pulsas una mesa y te deja elejir el camarero
     public void imageButtonClicker(View view){
         setPopupList(view.getId());
         camarerosPopupList.show();
     }
 
+    //PopUp de
     private void setPopupList(int vid) {
         UsersDbHelper usersDbHelper = new UsersDbHelper(getBaseContext());
         final List<String> status = usersDbHelper.nombreCamareros(usersDbHelper.getAllObjects());
@@ -78,7 +80,7 @@ public class MesasAdmin extends AppCompatActivity {
     }
 
     
-
+    //LLamo al menu de admin
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_admin, menu);
@@ -87,6 +89,7 @@ public class MesasAdmin extends AppCompatActivity {
         return true;
     }
 
+    //Si hay algun mensaje cambia el icono
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         if (((GlobalVariables) this.getApplication()).getMensajes().size() > 0){
@@ -96,6 +99,7 @@ public class MesasAdmin extends AppCompatActivity {
         return super.onPrepareOptionsMenu(menu);
     }
 
+    //Al pulsar cambia de pantalla
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -118,6 +122,7 @@ public class MesasAdmin extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Volvemos a el login
     public void returnVentanaLogin(View view){
         Intent intent = new Intent(this, EnterLayout.class);
         startActivity(intent);

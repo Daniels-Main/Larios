@@ -22,15 +22,11 @@ public class PlatosHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) {
-        //Cada vez que empieza un elemento "vacia" el valor actual
         currentValue.setLength(0);
-        //Cuando encuentre el elemento Cancion
         if (qName.equalsIgnoreCase("plato")) {
-            //Inicia la canion actual
             platoActual = new Plato();
         }
         if (qName.equalsIgnoreCase("ingredientes")) {
-            //Inicia la canion actual
             ingredientes = new ArrayList<>();
         }
     }
@@ -50,6 +46,7 @@ public class PlatosHandler extends DefaultHandler {
             platoActual.setPrecio((currentValue.toString()));
         }
 
+        //Cuando el nombre del paramentro sea "verduras" y el valor sea "1" añade el nombre a los ingredientes
         if (qName.equalsIgnoreCase("verduras") && currentValue.toString().equals("1")) {
             ingredientes.add(qName);
         }

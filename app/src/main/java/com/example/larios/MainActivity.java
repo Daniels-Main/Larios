@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Tod0 el codigo de getWindow sirve para quitar la interfaz del movil y que ocupe un buen aspecto
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().getDecorView().setSystemUiVisibility(
@@ -36,18 +39,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }
-
+    //Este metodo para iniciar se ejecuta al pulsar el boton y carga todas las variables necesatias en unas variables globales
     public void iniciar(View view){
+        //Cargo las mesas
         ((GlobalVariables) this.getApplication()).inicializar();
+        //Cargo los mensajes del admin
         ((GlobalVariables) this.getApplication()).inicializarMensajes();
+        //Cargo el xml
         CargarDelXML a = new CargarDelXML();
         try {
             ((GlobalVariables) this.getApplication()).setBebidas(a.TodasBebidas(this));
             ((GlobalVariables) this.getApplication()).setPlatos(a.TodosPlatos(this));
         } catch (Exception e) {
-            e.printStackTrace();
+            //Un error y saldria de la app
+            Log.e("MainActivity","Error al cargar los platos y bebidas");
+            finishAffinity();
         }
-
+        //Con esta linea cambio de pantalla
         Intent intent = new Intent(this,EnterLayout.class);
         startActivity(intent);
     }

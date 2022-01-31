@@ -32,8 +32,11 @@ public class EdicionPlatos extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
         setContentView(R.layout.activity_edicion_platos);
 
+
+        //Recojo el nombre del plato de la pantalla anterior
         Intent i = getIntent();
 
+        //Y lo pongo tod0 en esta pantalla de edición
         String nombre1 = i.getStringExtra("plato");
         Plato plato = buscarPlato(nombre1);
         TextView nombre = findViewById(R.id.popUp_nombre_comida);
@@ -102,11 +105,13 @@ public class EdicionPlatos extends AppCompatActivity {
         }
 
 
+        //Cancelar vuelve al buscador
         Button cancelar = findViewById(R.id.button_cancel);
         cancelar.setOnClickListener(view1 -> {
             finish();
         });
 
+        //Aceptar vuelve a la InterfazMesa
         Button accept = findViewById(R.id.button_acept);
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +126,7 @@ public class EdicionPlatos extends AppCompatActivity {
         });
 
     }
-
+    //Metodo para saber que plato es de la base de datos (Se repite 2 de veces en 2 clases diferentes)
     public Plato buscarPlato(String obejtoPulsado){
         for(Plato p : ((GlobalVariables) this.getApplication()).getPlatos()){
             if (obejtoPulsado.equals(p.getNombre())){

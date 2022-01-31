@@ -27,6 +27,7 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 
 public class CargarDelXML extends AppCompatActivity {
+    //Metodo para cargar todas las bebidas del xml a una arraylist
     public ArrayList<Bebida> TodasBebidas(Context c) throws Exception {
         InputStream stream = c.getAssets().open("base_de_bebidas.xml");
         SAXParserFactory factory = SAXParserFactory.newInstance();
@@ -34,9 +35,12 @@ public class CargarDelXML extends AppCompatActivity {
         BebidasHandler handler = new BebidasHandler();
         saxParser.parse(stream, handler);
         ArrayList<Bebida> result = (ArrayList<Bebida>) handler.getListaBebidas();
+
+        stream.close();
         return  result;
     }
 
+    //Metodo para cargar todos los platos del xml a una arraylist
     public ArrayList<Plato> TodosPlatos(Context c) throws Exception {
         InputStream stream = c.getAssets().open("base_de_platos.xml");
         SAXParserFactory factory = SAXParserFactory.newInstance();

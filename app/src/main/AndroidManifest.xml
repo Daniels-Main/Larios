@@ -22,7 +22,7 @@
             android:name=".admin.Mensajes"
             android:exported="false" />
         <activity
-            android:name=".camarero.InterfazPlatos"
+            android:name=".camarero.InterfazMesa"
             android:exported="false" />
         <activity
             android:name=".admin.MainTickets"

@@ -62,8 +62,7 @@ public class RestContra extends AppCompatActivity {
     }
 
     public void returnVentanaLogin(View view){
-        Intent intent = new Intent(this,EnterLayout.class);
-        startActivity(intent);
+        finish();
     }
 
 }

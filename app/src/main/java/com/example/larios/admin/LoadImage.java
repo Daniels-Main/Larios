@@ -11,6 +11,9 @@ import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
+//Clase para descargar una imagen de internet y guardarla como ImageView
+
 public class LoadImage extends AsyncTask<String, Void, Bitmap> {
     private final WeakReference<ImageView> imageViewReference;
 

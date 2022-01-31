@@ -11,6 +11,7 @@ import com.example.larios.R;
 
 import java.util.List;
 
+//Adapter para los mensajes
 public class MensajeAdapter extends ArrayAdapter<Mensaje> {
     private int newResourceId;
     public MensajeAdapter(Context context, int resourceId, List<Mensaje> cityList){

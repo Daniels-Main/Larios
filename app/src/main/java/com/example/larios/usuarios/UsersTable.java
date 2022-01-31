@@ -2,6 +2,7 @@ package com.example.larios.usuarios;
 
 import android.provider.BaseColumns;
 
+//Estructura de la tabla base de datos
 public class UsersTable implements BaseColumns{
     public static abstract class UsersEntry  {
         public static final String TABLE_NAME ="usuarios";

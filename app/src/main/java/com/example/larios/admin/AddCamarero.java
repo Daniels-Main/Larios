@@ -42,6 +42,7 @@ public class AddCamarero extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
+    //Tod0 el tema de menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_admin, menu);
@@ -87,6 +88,7 @@ public class AddCamarero extends AppCompatActivity {
     }
 
 
+    //Descarga la imagen de la URL que le hemos pasado y la enseña
     public void subirImagen(View view){
         ImageView imageView = findViewById(R.id.imageView2);
         url = editText.getText().toString();
@@ -96,6 +98,7 @@ public class AddCamarero extends AppCompatActivity {
         editText.getText().clear();
     }
 
+    //Genera un usuario y lo guarda en la base de datos
     public void generar(View view){
         EditText user = findViewById(R.id.etNombre);
         EditText contra = findViewById(R.id.id_contra);

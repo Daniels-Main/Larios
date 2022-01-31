@@ -47,18 +47,22 @@ public class Buscador extends AppCompatActivity {
 
         list = new ArrayList<>();
 
+        //Hago un objeto de la lista el cual contiene el nombre y la categoria
         ArrayList<Plato> platos = ((GlobalVariables) this.getApplication()).getPlatos();
         ArrayList<Bebida> bebidas = ((GlobalVariables) this.getApplication()).getBebidas();
 
+        //Recorro toda la base de datos y meto todos los Platos y Bebidas en una array de Objetos lista
         for(Plato plato : platos){
             list.add(new ObjetoLista(plato.getNombre(), plato.getCategoria()));
         }
         for (Bebida b : bebidas){
             list.add(new ObjetoLista(b.getNombre(),b.getCategoria()));
         }
+
+        //Tube que hacer un adapter personalizado para que se vieran tod0 correcto
         ListMenuAdapter adapter = new ListMenuAdapter(this, list);
         listView.setAdapter(adapter);
-
+        //Esto es el buscador
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -72,25 +76,26 @@ public class Buscador extends AppCompatActivity {
                 return false;
             }
         });
-
+        //Al clicar un item
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
 
+            //Ve cual esta seleccioando
             ObjetoLista selected = adapter.getListMenu().get(i);
             String donde = "";
+            //Ve de que tipo es
             if (buscarBebida(selected.getNombre())==null){
                 donde = "plato";
             }else {
                 donde = "bebida";
             }
 
-
-            LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-
+            //Si es un plato vamos a la edicion de platos esperando un plato de vuelta
             if (donde.equals("plato")){
                 Intent intent = new Intent(this, EdicionPlatos.class);
                 intent.putExtra("plato",selected.getNombre());
                 startActivityForResult(intent, 19);
             }else{
+                //Si es una bebida se añade directamente
                 Toast.makeText(Buscador.this, "Bebida añadida", Toast.LENGTH_SHORT).show();
             }
 
@@ -99,7 +104,7 @@ public class Buscador extends AppCompatActivity {
 
     }
 
-
+    //Metodo para saber que bebida es de la base de datos
     public Bebida buscarBebida(String obejtoPulsado){
         for(Bebida b : ((GlobalVariables) this.getApplication()).getBebidas()){
             if (obejtoPulsado.equals(b.getNombre())){
@@ -109,12 +114,12 @@ public class Buscador extends AppCompatActivity {
         return null;
     }
 
-
-
+    //Volver
     public void volver(View view) {
         finish();
     }
 
+    //Pasamos los datos recojidos por el editor de platos hacia la InterfazMesa
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

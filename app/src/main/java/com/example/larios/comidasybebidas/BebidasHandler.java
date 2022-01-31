@@ -9,9 +9,9 @@ import java.util.List;
 
 public class BebidasHandler extends DefaultHandler {
     private StringBuilder currentValue = new StringBuilder();
-    //Genero la cancion actual
+    //Genero la bebida actual
     private Bebida bebidaActual;
-    //Genero la lista de canciones
+    //Genero la lista de bebidas
     private List<Bebida> listaBebidas;
 
     @Override
@@ -22,21 +22,22 @@ public class BebidasHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        //Cada vez que empieza un elemento "vacia" el valor actual
+        //Cada vez que empieza un elemento vacia el valor actual
         currentValue.setLength(0);
-        //Cuando encuentre el elemento Cancion
+        //Cuando encuentre el elemento bebida
         if (qName.equalsIgnoreCase("bebida")) {
-            //Inicia la canion actual
+            //Inicia la bebida actual
             bebidaActual = new Bebida();
         }
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
+        //Cuando encuentra un nombre, mientras el nombre del parametro sea este, añade el valor a la bebida actual
         if (qName.equalsIgnoreCase("nombre")) {
             bebidaActual.setNombre(currentValue.toString());
         }
-        //Y asi con el resto de parametros
+        //Repite lo mismo con el resto de parametros
         if (qName.equalsIgnoreCase("categoria")) {
             bebidaActual.setCategoria((currentValue.toString()));
         }
@@ -46,6 +47,8 @@ public class BebidasHandler extends DefaultHandler {
         if (qName.equalsIgnoreCase("precio")) {
             bebidaActual.setPrecio((currentValue.toString()));
         }
+
+        //Cuando encuentra otro nombre, guarda la bebida en la array
         if (qName.equalsIgnoreCase("nombre")){
             listaBebidas.add(bebidaActual);
         }

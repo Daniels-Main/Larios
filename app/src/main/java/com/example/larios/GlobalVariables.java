@@ -8,6 +8,7 @@ import com.example.larios.comidasybebidas.Plato;
 
 import java.util.ArrayList;
 
+//Clase de variables grobales
 public class GlobalVariables extends Application {
     private ArrayList<ObjetoMesa> someVariable;
     private ArrayList<Mensaje> mensajes;

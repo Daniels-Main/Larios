@@ -40,11 +40,14 @@ public class Mesas extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
         setContentView(R.layout.activity_mesas);
+
+        //Recojo el nombre de usuario de la pantalla anterior
         Intent intent = getIntent();
-        userName = intent.getStringExtra(EnterLayout.USER_MESSAGE);
+        userName = intent.getStringExtra("user");
 
+        //Busco los objetos mesas que estan asignados a este usuario
         om = ((GlobalVariables) this.getApplication()).getSomeVariable();
-
+        //Pongo los colores correspondientes
         validarColores();
     }
 
@@ -60,25 +63,27 @@ public class Mesas extends AppCompatActivity {
     }
 
     public void empezar(View view){
+        //Dependiendo que boton hayamos clicado si el color corresponde con azul entarra a la interfaz de la mesa
         ImageButton imageButton = findViewById(view.getId());
         try {
             ColorDrawable drawable = (ColorDrawable) imageButton.getBackground();
             int colorId = drawable.getColor();
 
-
             if (colorId == Color.RED) {
                 //Añadir algo a la cuenta
             } else if (colorId == Color.BLUE) {
-                Intent intent = new Intent(this, InterfazPlatos.class);
+                Intent intent = new Intent(this, InterfazMesa.class);
                 intent.putExtra("id",view.getId());
                 startActivity(intent);
             }
         }catch (Exception e){
+            //En el caso de que no haya color, no hay camarero
             TextView textView = findViewById(R.id.textView3);
             textView.setText("Esta mesa no tiene ningún camarero");
         }
     }
 
+    //Crea un popup por el cual puedes escribir un mensaje y enviarlo al admin
     public void ayuda(View view){
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.escribir_mensaje, null);
@@ -100,7 +105,7 @@ public class Mesas extends AppCompatActivity {
 
     }
 
-
+    //Vuelve a la ventana Login
     public void returnVentanaLogin(View view){
         Intent intent = new Intent(this,EnterLayout.class);
         startActivity(intent);

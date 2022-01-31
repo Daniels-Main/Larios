@@ -21,11 +21,9 @@ import java.util.ArrayList;
 
 public class EnterLayout extends AppCompatActivity {
     private UsersDbHelper usersDbHelper;
-    public static final String USER_MESSAGE = "com.example.app.MESSAGE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().getDecorView().setSystemUiVisibility(
@@ -37,15 +35,17 @@ public class EnterLayout extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_enter_layout);
-        usersDbHelper= new UsersDbHelper(getBaseContext());
 
+        //Inicializo la clase de la base de datos SQLite
+        usersDbHelper= new UsersDbHelper(getBaseContext());
 
     }
     public void login(View view){
 
-
+        //Busco al usuario en la base de datos
         Usuario actual = usuarioEncontrado(usersDbHelper.getAllObjects());
 
+        //Si el usario es null te saldra el texto para resetear la contraseña
         if (actual == null){
             TextView tv = findViewById(R.id.passerror);
             TextView tv2 = findViewById(R.id.resetContra);
@@ -57,19 +57,20 @@ public class EnterLayout extends AppCompatActivity {
             tv2.setTextSize(15);
             tv2.setTextColor(Color.RED);
         }else{
+            //Dependiendo de si el usuario es admin entra en una pantalla o en otra
+            Intent intent;
             if (actual.getAdmin().equals("1")){
-                Intent intent = new Intent(this, MesasAdmin.class);
-                startActivity(intent);
+                intent = new Intent(this, MesasAdmin.class);
             }else{
-                Intent intent = new Intent(this, Mesas.class);
-                intent.putExtra(USER_MESSAGE,actual.getNombre());
-                startActivity(intent);
+                intent = new Intent(this, Mesas.class);
+                intent.putExtra("user",actual.getNombre());
             }
+            startActivity(intent);
         }
 
 
     }
-
+    //Metodo que recoje la arrayList de usuarios que nos aporta la base de datos y devuelve el usuario encontrado
     public Usuario usuarioEncontrado(ArrayList<Usuario> lista){
         EditText textNombre = findViewById(R.id.editTextTextPersonName);
         EditText passw = (EditText) findViewById(R.id.editTextTextPassword);
@@ -81,9 +82,14 @@ public class EnterLayout extends AppCompatActivity {
         return null;
     }
 
+
     public void reset(View view){
-        Intent intent = new Intent(this, RestContra.class);
-        startActivity(intent);
+        TextView a = findViewById(view.getId());
+        //Comprueba que el reset pass tiene texto porque sino se puede pulsar sin que te salga el mensaje
+        if (!a.getText().toString().equals("")) {
+            Intent intent = new Intent(this, RestContra.class);
+            startActivity(intent);
+        }
     }
 
 

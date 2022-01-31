@@ -20,6 +20,7 @@ public class UsersDbHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    //Al crear la base de datos hace lo siguiente
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE " + UsersTable.UsersEntry.TABLE_NAME + " ("
@@ -57,6 +58,7 @@ public class UsersDbHelper extends SQLiteOpenHelper {
 
     }
 
+    //metodo para recojer los usuarios de la base de datos en una arraylist
     public ArrayList<Usuario> getAllObjects()
     {
         // Get the isntance of the database
@@ -107,6 +109,7 @@ public class UsersDbHelper extends SQLiteOpenHelper {
         return objectList;
     }
 
+    //Array de nombres
     public List<String> nombreCamareros(ArrayList<Usuario> lista){
         List<String> nombres = new ArrayList<>();
         for (Usuario usuario : lista){
@@ -118,6 +121,7 @@ public class UsersDbHelper extends SQLiteOpenHelper {
         return nombres;
     }
 
+    //Cambar de contraseña a un usuario
     public void cambioDePass(String nom,String passw){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -125,6 +129,8 @@ public class UsersDbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.update(UsersTable.UsersEntry.TABLE_NAME, cv, "nombre = ?", new String[]{nom});
     }
 
+
+    //Generar un usuario
     public void generarUser(String nom, String contra, String url){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 

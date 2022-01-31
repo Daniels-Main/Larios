@@ -51,6 +51,7 @@ public class ListMenuAdapter extends BaseAdapter {
         return 0;
     }
 
+    //La view del objeto lista con el el texto del nombre y la categoria
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder;
@@ -79,12 +80,15 @@ public class ListMenuAdapter extends BaseAdapter {
         TextView txtCategoria;
     }
 
+    //Unicos metodos creados por mi
+    //Limiar la string para que no tenga accentos
     public static String cleanString(String texto) {
         texto = Normalizer.normalize(texto, Normalizer.Form.NFD);
         texto = texto.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
         return texto;
     }
 
+    //Un filtro personalizado para el buscador para el buscador
     public Filter getFilter() {
         Filter filter = new Filter() {
 
