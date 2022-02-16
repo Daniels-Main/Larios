@@ -98,7 +98,7 @@ public class Mensajes extends AppCompatActivity {
 
     //Borrar un mensaje
     public void borrarMensaje(Mensaje m){
-        ((GlobalVariables) this.getApplication()).remove(m);
+        ((GlobalVariables) this.getApplication()).removeM(m);
         finish();
         startActivity(getIntent());
     }

@@ -1,7 +1,6 @@
 package com.example.larios.camarero;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -12,26 +11,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.larios.GlobalVariables;
+import com.example.larios.ObjetoMesa;
 import com.example.larios.R;
-import com.example.larios.admin.AddCamarero;
-import com.example.larios.admin.MainTickets;
-import com.example.larios.admin.Mensajes;
-import com.example.larios.admin.MesasAdmin;
+import com.example.larios.comidasybebidas.Bebida;
 import com.example.larios.comidasybebidas.Plato;
 
-import org.w3c.dom.Text;
-
-import javax.xml.transform.OutputKeys;
+import java.util.ArrayList;
 
 public class InterfazMesa extends AppCompatActivity {
     private Toolbar toolbar;
     private Menu mMenu;
     private String numMesa;
-    Plato editado;
+    ObjetoMesa esta;
+    ListView lv;
     @SuppressLint("NonConstantResourceId")
     @Override
 
@@ -49,7 +46,7 @@ public class InterfazMesa extends AppCompatActivity {
         setContentView(R.layout.activity_interfaz_platos);
         toolbar = (Toolbar) findViewById(R.id.tool_bar_i_platos);
         setSupportActionBar(toolbar);
-
+        lv = findViewById(R.id.im_listview);
         //Recojo el id del boton de la pantalla anterior
         Bundle b = new Bundle();
         b = getIntent().getExtras();
@@ -79,6 +76,12 @@ public class InterfazMesa extends AppCompatActivity {
                 numMesa = "6";
                 break;
         }
+        ArrayList<ObjetoMesa> mesas = ((GlobalVariables) this.getApplication()).getObjMesa();
+        for (ObjetoMesa objetoMesa : mesas){
+            if (objetoMesa.getNumeroMesa()==id){
+                esta = objetoMesa;
+            }
+        }
 
         //Si el numMesa esta vacio pues significa que no se encuentra el numero
         if (numMesa.equals("")){
@@ -86,7 +89,11 @@ public class InterfazMesa extends AppCompatActivity {
         }else{
             numeroMesa.setText("Mesa Numero: "+numMesa);
         }
-
+        lv.setOnItemLongClickListener((adapterView, view, i, l) -> {
+            esta.removeComida(i);
+            listView();
+            return false;
+        });
     }
 
     //Aquí le pongo el menu del camarero a la toolbar
@@ -120,11 +127,41 @@ public class InterfazMesa extends AppCompatActivity {
                 //Empezamos la siguiente pantalla a la espera de un plato
                 startActivityForResult(new Intent(this, Buscador.class),1568);
                 break;
+
+            case R.id.action_reload:
+                listView();
+                break;
         }
 
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void actualizarTotal(){
+        TextView tvTotal = findViewById(R.id.tv_total);
+        double precioTotal = 0;
+        for (Object ol : esta.getComida()){
+            if (ol instanceof Plato){
+                Plato plato = (Plato) ol;
+                precioTotal += Double.parseDouble(plato.getPrecio());
+            } else if (ol instanceof Bebida){
+                Bebida bebida = (Bebida) ol;
+                precioTotal += Double.parseDouble(bebida.getPrecio());
+            }
+        }
+        tvTotal.setText("TOTAL: "+precioTotal+"€");
+    }
+
+
+    public void listView(){
+
+        AdapterTicket adapterTicket = new AdapterTicket(this, esta.getComida());
+        lv.setAdapter(adapterTicket);
+        adapterTicket.notifyDataSetChanged();
+        actualizarTotal();
+    }
+
+
     //Metotdo para vover hacia atras
     public void volver(View view) {
         finish();
@@ -137,9 +174,14 @@ public class InterfazMesa extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1568) {
             if (resultCode == RESULT_OK) {
-                editado = buscarPlato(data.getStringExtra("nombre_plato"));
+                Plato editado = buscarPlato(data.getStringExtra("nombre_plato"));
                 editado.setIngredientes(data.getStringArrayListExtra("ingredientes"));
+                esta.addComida(editado);
+            }else if (resultCode == RESULT_FIRST_USER){
+                Bebida bebida = buscarBebida(data.getStringExtra("nombre_bebida"));
+                esta.addComida(bebida);
             }
+            listView();
         }else{
             Toast.makeText(this,"No se desde donde has vuelto",Toast.LENGTH_SHORT);
         }
@@ -155,6 +197,28 @@ public class InterfazMesa extends AppCompatActivity {
         return null;
     }
 
+    //Metodo para saber que bebida es de la base de datos
+    public Bebida buscarBebida(String obejtoPulsado){
+        for(Bebida b : ((GlobalVariables) this.getApplication()).getBebidas()){
+            if (obejtoPulsado.equals(b.getNombre())){
+                return b;
+            }
+        }
+        return null;
+    }
 
+    public void enviarCocina(View view){
+        ((GlobalVariables) this.getApplication()).addPedido(esta.getNumeroMesa(),esta.getComida());
+        ArrayList<Object> pedidoVacio = new ArrayList<>();
+        esta.setComida(pedidoVacio);
+        listView();
+        Toast.makeText(this, "Se ha enviado el pedido a cocina", Toast.LENGTH_SHORT).show();
+    }
+
+    public void enviarACaja(View view){
+       Intent i = new Intent(this,VistaTicket.class);
+       i.putExtra("nuemrodemesa",esta.getNumeroMesa());
+       startActivity(i);
+    }
 
 }

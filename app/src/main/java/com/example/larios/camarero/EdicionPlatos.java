@@ -116,10 +116,42 @@ public class EdicionPlatos extends AppCompatActivity {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                ArrayList<String> ingredientesBasura = new ArrayList<>();
+
+                //Comprovando ingredientes
+                if (verdura.isChecked())
+                    ingredientesBasura.add("verduras");
+                if (aceituna.isChecked())
+                    ingredientesBasura.add("aceitunas");
+                if (harina.isChecked())
+                    ingredientesBasura.add("harina");
+                if (lacteos.isChecked())
+                    ingredientesBasura.add("lacteos");
+                if (carne.isChecked())
+                    ingredientesBasura.add("carne");
+                if (pescado.isChecked())
+                    ingredientesBasura.add("pescado");
+                if (marisco.isChecked())
+                    ingredientesBasura.add("mariscos");
+                if (arroz.isChecked())
+                    ingredientesBasura.add("arroz");
+                if (pasta.isChecked())
+                    ingredientesBasura.add("pasta");
+                if (azucar.isChecked())
+                    ingredientesBasura.add("azucar");
+                if (chocoles.isChecked())
+                    ingredientesBasura.add("chocolate");
+                if (huevos.isChecked())
+                    ingredientesBasura.add("huevos");
+                if (frutos_secos.isChecked())
+                    ingredientesBasura.add("frutos_secos");
+
+
+
                 Intent a = new Intent();
                 a.putExtra("nombre_plato",plato.getNombre());
-                ArrayList<String> ingred = (ArrayList<String>) plato.getIngredientes();
-                a.putExtra("ingredientes",ingred);
+                a.putExtra("ingredientes",ingredientesBasura);
                 setResult(RESULT_OK, a);
                 finish();
             }

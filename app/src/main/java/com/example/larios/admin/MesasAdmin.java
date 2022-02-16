@@ -68,7 +68,7 @@ public class MesasAdmin extends AppCompatActivity {
         camarerosPopupList.setAdapter(adapter);
         camarerosPopupList.setHeight(200);
         camarerosPopupList.setOnItemClickListener((parent, view, position, id) -> {
-            for (ObjetoMesa objetoMesa : ((GlobalVariables) this.getApplication()).getSomeVariable()){
+            for (ObjetoMesa objetoMesa : ((GlobalVariables) this.getApplication()).getObjMesa()){
                 if (objetoMesa.getNumeroMesa()==vid){
                     ((GlobalVariables) this.getApplication()).remove(objetoMesa);
                 }

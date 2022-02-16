@@ -2,6 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_reload"
+        android:orderInCategory="101"
+        android:title="Abrir carta"
+        android:icon="@drawable/ic_baseline_replay_24"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/action_carta"
         android:orderInCategory="102"
         android:title="Abrir carta"

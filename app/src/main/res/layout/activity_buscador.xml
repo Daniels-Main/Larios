@@ -56,7 +56,7 @@
 
 
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/listviewTik"
         android:layout_width="316dp"
         android:layout_height="508dp"
         android:divider="#ad5"

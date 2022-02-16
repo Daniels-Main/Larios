@@ -8,6 +8,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -17,17 +19,25 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.larios.EnterLayout;
 import com.example.larios.GlobalVariables;
 import com.example.larios.ObjetoMesa;
 import com.example.larios.R;
+import com.example.larios.admin.AddCamarero;
+import com.example.larios.admin.MainTickets;
 import com.example.larios.admin.Mensaje;
+import com.example.larios.admin.Mensajes;
+import com.example.larios.admin.MesasAdmin;
 
 import java.util.ArrayList;
 
 public class Mesas extends AppCompatActivity {
     private ArrayList<ObjetoMesa> om;
     private String userName;
+    private Toolbar tb;
+    private Menu mMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,9 +56,40 @@ public class Mesas extends AppCompatActivity {
         userName = intent.getStringExtra("user");
 
         //Busco los objetos mesas que estan asignados a este usuario
-        om = ((GlobalVariables) this.getApplication()).getSomeVariable();
+        om = ((GlobalVariables) this.getApplication()).getObjMesa();
         //Pongo los colores correspondientes
         validarColores();
+
+        tb = (Toolbar) findViewById(R.id.tool_bar_mesas);
+        setSupportActionBar(tb);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_listado, menu);
+        tb.setTitle("");
+        mMenu = menu;
+        return true;
+    }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        switch (id){
+            case R.id.action_comandas:
+                Intent intent = new Intent(Mesas.this, ListadoMesas.class);
+                startActivity(intent);
+                break;
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void validarColores(){

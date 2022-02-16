@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ListView;
@@ -42,7 +41,7 @@ public class Buscador extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
         setContentView(R.layout.activity_buscador);
         searchView = findViewById(R.id.searchView);
-        listView = findViewById(R.id.listview);
+        listView = findViewById(R.id.listviewTik);
 
 
         list = new ArrayList<>();
@@ -96,6 +95,10 @@ public class Buscador extends AppCompatActivity {
                 startActivityForResult(intent, 19);
             }else{
                 //Si es una bebida se añade directamente
+                Intent intent = new Intent();
+                intent.putExtra("nombre_bebida",selected.getNombre());
+                setResult(RESULT_FIRST_USER, intent);
+                finish();
                 Toast.makeText(Buscador.this, "Bebida añadida", Toast.LENGTH_SHORT).show();
             }
 

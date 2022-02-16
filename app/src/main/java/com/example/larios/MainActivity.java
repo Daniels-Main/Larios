@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_main);
 
     }
@@ -45,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         ((GlobalVariables) this.getApplication()).inicializar();
         //Cargo los mensajes del admin
         ((GlobalVariables) this.getApplication()).inicializarMensajes();
+        //Inicio los pedidos a cocina
+        ((GlobalVariables) this.getApplication()).iniciarCocina();
         //Cargo el xml
         CargarDelXML a = new CargarDelXML();
         try {

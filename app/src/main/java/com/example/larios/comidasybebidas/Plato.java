@@ -1,8 +1,9 @@
 package com.example.larios.comidasybebidas;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Plato {
+public class Plato implements Serializable {
     private String nombre;
     private String categoria;
     private String tipo;
