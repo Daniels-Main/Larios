@@ -35,13 +35,15 @@
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_main_tickets.xml" value="0.3625" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_mensajes.xml" value="0.5" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_mesas.xml" value="0.33" />
-        <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_mesas_admin.xml" value="0.1" />
+        <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_mesas_admin.xml" value="0.5" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_pedidos_mesa.xml" value="0.3625" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_rest_contra.xml" value="0.33" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_tiket_camarero.xml" value="0.3625" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_view_pager.xml" value="0.5" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_vista_ticket.xml" value="0.5067204301075269" />
+        <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_vista_ticket_admin.xml" value="0.3625" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/activity_vistas_pages.xml" value="0.2821557971014493" />
+        <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/cambiar_precio.xml" value="0.3625" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/enter_layout.xml" value="0.67" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/escribir_mensaje.xml" value="0.3625" />
         <entry key="..\:/Android Studio/Larios/app/src/main/res/layout/item_simple_status.xml" value="0.3625" />

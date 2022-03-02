@@ -42,10 +42,6 @@ public class MainActivity extends AppCompatActivity {
     public void iniciar(View view){
         //Cargo las mesas
         ((GlobalVariables) this.getApplication()).inicializar();
-        //Cargo los mensajes del admin
-        ((GlobalVariables) this.getApplication()).inicializarMensajes();
-        //Inicio los pedidos a cocina
-        ((GlobalVariables) this.getApplication()).iniciarCocina();
         //Cargo el xml
         CargarDelXML a = new CargarDelXML();
         try {

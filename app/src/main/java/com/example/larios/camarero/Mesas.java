@@ -25,11 +25,7 @@ import com.example.larios.EnterLayout;
 import com.example.larios.GlobalVariables;
 import com.example.larios.ObjetoMesa;
 import com.example.larios.R;
-import com.example.larios.admin.AddCamarero;
-import com.example.larios.admin.MainTickets;
 import com.example.larios.admin.Mensaje;
-import com.example.larios.admin.Mensajes;
-import com.example.larios.admin.MesasAdmin;
 
 import java.util.ArrayList;
 
@@ -83,7 +79,7 @@ public class Mesas extends AppCompatActivity {
 
         switch (id){
             case R.id.action_comandas:
-                Intent intent = new Intent(Mesas.this, ListadoMesas.class);
+                Intent intent = new Intent(Mesas.this, PedidosMesa.class);
                 startActivity(intent);
                 break;
         }
@@ -111,10 +107,14 @@ public class Mesas extends AppCompatActivity {
             int colorId = drawable.getColor();
 
             if (colorId == Color.RED) {
-                //Añadir algo a la cuenta
+                Intent intent = new Intent(this, InterfazMesa.class);
+                intent.putExtra("id",view.getId());
+                intent.putExtra("camareroName",userName);
+                startActivity(intent);
             } else if (colorId == Color.BLUE) {
                 Intent intent = new Intent(this, InterfazMesa.class);
                 intent.putExtra("id",view.getId());
+                intent.putExtra("camareroName",userName);
                 startActivity(intent);
             }
         }catch (Exception e){
@@ -138,7 +138,7 @@ public class Mesas extends AppCompatActivity {
 
         Button visto = popupView.findViewById(R.id.button_send);
         visto.setOnClickListener(view1 -> {
-            EditText msg = popupView.findViewById(R.id.et_mensaje);
+            EditText msg = popupView.findViewById(R.id.et_price);
             Mensaje mensaje = new Mensaje(userName,msg.getText().toString());
             popupWindow.dismiss();
             ((GlobalVariables) this.getApplication()).addM(mensaje);

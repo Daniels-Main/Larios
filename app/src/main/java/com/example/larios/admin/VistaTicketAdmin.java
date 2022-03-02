@@ -1,27 +1,35 @@
-package com.example.larios.camarero;
+package com.example.larios.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.larios.GlobalVariables;
-import com.example.larios.ObjetoMesa;
 import com.example.larios.R;
+import com.example.larios.camarero.AdapterTicket;
 import com.example.larios.comidasybebidas.Bebida;
 import com.example.larios.comidasybebidas.Plato;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class VistaTicket extends AppCompatActivity {
+public class VistaTicketAdmin extends AppCompatActivity {
+    ListView lv;
     int idMesa;
+    List<Object> apet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,10 +41,9 @@ public class VistaTicket extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_vista_ticket);
-
+        setContentView(R.layout.activity_vista_ticket_admin);
         Intent i = getIntent();
-        idMesa = i.getIntExtra("nuemrodemesa",0);
+        idMesa = i.getIntExtra("numMesa",0);
         String numMesa;
         switch (idMesa){
             case R.id.imageButton:
@@ -64,34 +71,68 @@ public class VistaTicket extends AppCompatActivity {
         ad.setText(numMesa);
 
         try{
-            ListView lv = findViewById(R.id.listV);
+            lv = findViewById(R.id.listV);
 
             if (((GlobalVariables) this.getApplication()).getCocina().containsKey(idMesa)){
-                List<Object> apet = ((GlobalVariables) this.getApplication()).getCocina().get(idMesa);
+                apet = ((GlobalVariables) this.getApplication()).getCocina().get(idMesa);
                 if (!apet.isEmpty()){
                     AdapterTicket adapterTicket = new AdapterTicket(this,apet);
                     lv.setAdapter(adapterTicket);
 
-                    actualizarTotal((ArrayList<Object>) apet);
+                    actualizarTotal();
                 }else{
                     Toast.makeText(this, "No han pasado platos por cocina", Toast.LENGTH_SHORT).show();
                 }
             }
+            lv.setOnItemClickListener((adapterView, view, i1, l) -> {
+                Object a = apet.get(i1);
+                LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.cambiar_precio, null);
+
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                boolean focusable = true;
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                Button visto = popupView.findViewById(R.id.button_send);
+                visto.setOnClickListener(view1 -> {
+                    EditText msg = popupView.findViewById(R.id.et_price);
+
+                    if (a instanceof Plato){
+                        Plato plato = (Plato) a;
+                        plato.setPrecio(msg.getText().toString());
+                        apet.set(i1,plato);
+                    } else {
+                        Bebida bebida = (Bebida) a;
+                        bebida.setPrecio(msg.getText().toString());
+                        apet.set(i1,bebida);
+                    }
+                    popupWindow.dismiss();
+                    listView();
+                });
+
+
+
+            });
 
         }catch (Exception e){
             Toast.makeText(this, "No han pasado platos por cocina", Toast.LENGTH_SHORT).show();
         }
 
     }
-
-    public void volverTick(View v){
-        finish();
+    public void listView(){
+        AdapterTicket adapterTicket = new AdapterTicket(this, apet);
+        lv.setAdapter(adapterTicket);
+        adapterTicket.notifyDataSetChanged();
+        actualizarTotal();
     }
 
-    public void actualizarTotal(ArrayList<Object> arrayList){
+    public void actualizarTotal(){
         TextView tvTotal = findViewById(R.id.precioTotalTick);
         double precioTotal = 0;
-        for (Object ol : arrayList){
+        for (Object ol : apet){
             if (ol instanceof Plato){
                 Plato plato = (Plato) ol;
                 precioTotal += Double.parseDouble(plato.getPrecio());
@@ -103,12 +144,13 @@ public class VistaTicket extends AppCompatActivity {
         tvTotal.setText("TOTAL: "+precioTotal+"€");
     }
 
-    public void caja(View v){
-        ((GlobalVariables) this.getApplication()).getCocina().remove(idMesa);
-        Toast.makeText(this, "Se ha enviado a caja", Toast.LENGTH_SHORT).show();
+
+    public void volverTick(View view) {
         finish();
     }
-    public void repre(View v){
-        Toast.makeText(this, "Se ha enviado a un administrador", Toast.LENGTH_SHORT).show();
+
+    public void envairaca(View view) {
+        ((GlobalVariables) this.getApplication()).getCocina().remove(idMesa);
+        Toast.makeText(this, "Enviado a caja", Toast.LENGTH_SHORT).show();
     }
 }

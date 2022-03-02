@@ -75,8 +75,6 @@ public class AdapterTicket extends BaseAdapter {
             }else{
                 holder.txtPrecio.setText(plato.getPrecio());
             }
-
-
         } else if (ol instanceof Bebida){
             Bebida bebida = (Bebida) ol;
             holder.txtName.setText(bebida.getNombre());
@@ -86,6 +84,10 @@ public class AdapterTicket extends BaseAdapter {
             }else{
                 holder.txtPrecio.setText(bebida.getPrecio());
             }
+        }else if (ol instanceof String){
+            holder.txtName.setText((String) ol);
+            holder.txtTipo.setText("");
+            holder.txtPrecio.setText("");
         }
 
         return view;

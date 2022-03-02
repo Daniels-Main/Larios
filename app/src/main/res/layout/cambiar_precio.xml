@@ -18,9 +18,9 @@
             android:layout_width="304dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Mensaje"
-            android:maxLength="50"
+            android:hint="Nuevo precio"
             android:inputType="textPersonName"
+            android:maxLength="50"
             android:textAlignment="center" />
 
         <LinearLayout
@@ -36,7 +36,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/ic_baseline_send_24" />
+                android:drawableTop="@drawable/ic_baseline_euro_24" />
         </LinearLayout>
     </LinearLayout>
 

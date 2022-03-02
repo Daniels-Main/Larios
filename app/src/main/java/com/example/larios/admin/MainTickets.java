@@ -4,15 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageButton;
 
 import com.example.larios.EnterLayout;
 import com.example.larios.GlobalVariables;
 import com.example.larios.R;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainTickets extends AppCompatActivity {
     private Toolbar toolbar;
@@ -33,6 +38,27 @@ public class MainTickets extends AppCompatActivity {
         setContentView(R.layout.activity_main_tickets);
         toolbar = (Toolbar) findViewById(R.id.tool_bar_ticketadmin);
         setSupportActionBar(toolbar);
+
+
+
+        HashMap<Integer, ArrayList<Object>> comida = ((GlobalVariables) this.getApplication()).getCocina();
+
+
+        for (Integer key : comida.keySet()){
+            ImageButton im = findViewById(key);
+            im.setBackgroundColor(Color.GREEN);
+
+
+            im.setOnClickListener(view -> {
+                Intent intent = new Intent(MainTickets.this, VistaTicketAdmin.class);
+                intent.putExtra("numMesa",key);
+                startActivity(intent);
+            });
+
+        }
+
+
+
     }
 
     @Override

@@ -16,17 +16,16 @@ public class GlobalVariables extends Application {
     private ArrayList<Bebida> bebidas;
     private ArrayList<Plato> platos;
     private HashMap<Integer,ArrayList<Object>> cocina;
+    private HashMap<String, String> alertas;
 
 
     public void inicializar(){
         someVariable = new ArrayList<>();
-    }
-    public void inicializarMensajes(){
         mensajes = new ArrayList<>();
-    }
-    public void iniciarCocina(){
         cocina = new HashMap<>();
+        alertas = new HashMap<>();
     }
+
 
 
     public void add(ObjetoMesa om){
@@ -54,9 +53,15 @@ public class GlobalVariables extends Application {
 
 
     }
-
-    public void remove(int idMesa){
+    public void removePedido(int idMesa){
         cocina.remove(idMesa);
+    }
+
+    public void addAlerta(String camarero, String intruso){
+        alertas.put(camarero,intruso);
+    }
+    public void removeAlerta(String camarero){
+        alertas.remove(camarero);
     }
 
 
@@ -99,5 +104,13 @@ public class GlobalVariables extends Application {
 
     public void setCocina(HashMap<Integer, ArrayList<Object>> cocina) {
         this.cocina = cocina;
+    }
+
+    public HashMap<String, String> getAlertas() {
+        return alertas;
+    }
+
+    public void setAlertas(HashMap<String, String> alertas) {
+        this.alertas = alertas;
     }
 }

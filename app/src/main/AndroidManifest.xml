@@ -13,13 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Larios">
         <activity
+            android:name=".admin.VistaTicketAdmin"
+            android:exported="false" />
+        <activity
             android:name=".camarero.VistaTicket"
             android:exported="false" />
         <activity
             android:name=".camarero.PedidosMesa"
-            android:exported="false" />
-        <activity
-            android:name=".camarero.ListadoMesas"
             android:exported="false" />
         <activity
             android:name=".camarero.EdicionPlatos"

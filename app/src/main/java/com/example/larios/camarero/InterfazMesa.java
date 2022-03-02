@@ -22,6 +22,7 @@ import com.example.larios.comidasybebidas.Bebida;
 import com.example.larios.comidasybebidas.Plato;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class InterfazMesa extends AppCompatActivity {
     private Toolbar toolbar;
@@ -29,6 +30,7 @@ public class InterfazMesa extends AppCompatActivity {
     private String numMesa;
     ObjetoMesa esta;
     ListView lv;
+    String camareroName;
     @SuppressLint("NonConstantResourceId")
     @Override
 
@@ -51,6 +53,9 @@ public class InterfazMesa extends AppCompatActivity {
         Bundle b = new Bundle();
         b = getIntent().getExtras();
         int id = b.getInt("id");
+        camareroName = b.getString("camareroName");
+
+
 
         //Para meterlo en un textView
         TextView numeroMesa = findViewById(R.id.textView2);
@@ -83,6 +88,10 @@ public class InterfazMesa extends AppCompatActivity {
             }
         }
 
+        if (!camareroName.equals(esta.getEmpleado())){
+            Toast.makeText(this, "Esta mesa es de: "+esta.getEmpleado(), Toast.LENGTH_SHORT).show();
+        }
+
         //Si el numMesa esta vacio pues significa que no se encuentra el numero
         if (numMesa.equals("")){
             numeroMesa.setText("Mesa Numero Irreconocible");
@@ -94,6 +103,12 @@ public class InterfazMesa extends AppCompatActivity {
             listView();
             return false;
         });
+
+        HashMap<String,String> alert =((GlobalVariables) this.getApplication()).getAlertas();
+        if (alert.containsKey(esta.getEmpleado())){
+            Toast.makeText(this, "El camarero: "+alert.get(esta.getEmpleado()) +" ha añadido comida", Toast.LENGTH_SHORT).show();
+            ((GlobalVariables) this.getApplication()).removeAlerta(esta.getEmpleado());
+        }
     }
 
     //Aquí le pongo el menu del camarero a la toolbar
@@ -212,6 +227,9 @@ public class InterfazMesa extends AppCompatActivity {
         ArrayList<Object> pedidoVacio = new ArrayList<>();
         esta.setComida(pedidoVacio);
         listView();
+        if (!camareroName.equals(esta.getEmpleado())){
+            ((GlobalVariables) this.getApplication()).addAlerta(esta.getEmpleado(),camareroName);
+        }
         Toast.makeText(this, "Se ha enviado el pedido a cocina", Toast.LENGTH_SHORT).show();
     }
 

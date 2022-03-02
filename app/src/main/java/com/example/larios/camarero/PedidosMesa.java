@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.example.larios.GlobalVariables;
 import com.example.larios.R;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class PedidosMesa extends AppCompatActivity {
 
     @Override
@@ -27,37 +30,45 @@ public class PedidosMesa extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
         setContentView(R.layout.activity_pedidos_mesa);
 
-        Intent i = getIntent();
-        int idMesa = i.getIntExtra("numMesa",0);
-        String numMesa;
-        switch (idMesa){
-            case R.id.imageButton:
-                numMesa = "Mesa 1";
-                break;
-            case R.id.imageButton2:
-                numMesa = "Mesa 2";
-                break;
-            case R.id.imageButton3:
-                numMesa = "Mesa 3";
-                break;
-            case R.id.imageButton4:
-                numMesa = "Mesa 4";
-                break;
-            case R.id.imageButton5:
-                numMesa = "Mesa 5";
-                break;
-            case R.id.imageButton6:
-                numMesa = "Mesa 6";
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + idMesa);
+
+        HashMap<Integer, ArrayList<Object>> a = ((GlobalVariables) this.getApplication()).getCocina();
+        ArrayList<Object> arrayLista = new ArrayList<>();
+        for (Integer mesa : a.keySet()){
+
+            String numMesa;
+            switch (mesa){
+                case R.id.imageButton:
+                    numMesa = "Mesa 1";
+                    break;
+                case R.id.imageButton2:
+                    numMesa = "Mesa 2";
+                    break;
+                case R.id.imageButton3:
+                    numMesa = "Mesa 3";
+                    break;
+                case R.id.imageButton4:
+                    numMesa = "Mesa 4";
+                    break;
+                case R.id.imageButton5:
+                    numMesa = "Mesa 5";
+                    break;
+                case R.id.imageButton6:
+                    numMesa = "Mesa 6";
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + mesa);
+            }
+            arrayLista.add(numMesa);
+            arrayLista.addAll(a.get(mesa));
         }
+
+
         TextView ad = findViewById(R.id.numeroDeMesa);
-        ad.setText(numMesa);
+        ad.setText("Cocina");
         ad.setTextSize(26);
 
         ListView lv = findViewById(R.id.listV);
-        AdapterTicket adapterTicket = new AdapterTicket(this,((GlobalVariables) this.getApplication()).getCocina().get(idMesa));
+        AdapterTicket adapterTicket = new AdapterTicket(this,arrayLista);
         lv.setAdapter(adapterTicket);
 
     }
